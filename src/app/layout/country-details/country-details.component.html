@@ -1,0 +1,9 @@
+
+<table>
+    <td *ngFor="let country of dataname">
+        <tr *ngFor="let key of ind">
+            <div class={{key}} *ngIf="check(country[key],key);else elseBlock">{{display}}</div>
+            <ng-template #elseBlock><img class="flag" src={{country[key]}} >{{flagText}}</ng-template>
+        </tr>
+    </td>
+</table>

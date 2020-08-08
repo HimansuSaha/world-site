@@ -27,11 +27,15 @@ export class AppComponent {
     private modalService: ModalService,
     private fb: FormBuilder,
     private searchService: SearchService) { 
+    
+  }
+  ngOnInit(){
     this.form = this.fb.group({
       checkArray: this.fb.array([])
-    })
+    });
+  
   }
-
+  
   search(){
     console.log(this.searchText, Number(this.seachOption));
     if(Number(this.seachOption)!=1 && this.searchText== undefined){
@@ -83,12 +87,15 @@ export class AppComponent {
   }
 
   openModal(id: string) {
+    this.ngOnInit()
+    
     this.modalService.open(id);
+    
   }
 
   closeModal(id: string) {
     this.data=[];
-    console.log(this.countries);
+    console.log(this.form.get('checkArray'));
     const checkArray: FormArray = this.form.get('checkArray') as FormArray;
     let tempList = [];
     let i: number = 0;
@@ -98,6 +105,7 @@ export class AppComponent {
         tempList.push(this.countries[item.value]);
         i++;
       });
+      console.log(tempList);
     this.reload = true;
     this.countries=tempList;
     this.modalService.close(id);

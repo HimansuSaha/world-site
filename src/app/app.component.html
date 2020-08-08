@@ -1,5 +1,6 @@
 <div class="navbar"></div>
 <div class="search">
+  <label>Search Country By:</label>
   <select class="seachOption" name="seachOption" id="seachOption" [(ngModel)]="seachOption">
     <option  *ngFor="let option of seachOptions; let i = index" [value]="option.id">
       {{option.name}}
